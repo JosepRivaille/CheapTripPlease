@@ -17,18 +17,9 @@ def hello_world():
     return 'Hello World!'
 
 
-@app.route('/params')
-def get_parameters_list():
-    parameters = {
-        'economy': 'numeric',
-        'daysRange': 'range/days',
-    }
-    return jsonify(**parameters)
-
-
 @app.route("/sendData", methods=['POST'])
 def get_sent_data():
-    return "OK"
+
 
 
 @app.route('/cities')

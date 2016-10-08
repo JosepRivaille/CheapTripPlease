@@ -2,8 +2,8 @@ html, body {
     max-width: 100%;
     max-height: 100%;
     overflow-x: hidden;
-    background: url('../images/home_wallpaper.png') no-repeat center center fixed;
-    background-color:rgba(255,0,0,0.5);
+    overflow-y: hidden;
+    background: rgba(255, 0, 0, 0.5) url('../images/home_wallpaper.png') no-repeat fixed center center;
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;
@@ -21,6 +21,14 @@ html, body {
 
 .nav > li > a:hover {
     color: #E4B101 !important;
+}
+
+.active {
+    color: #E4B101 !important;
+}
+
+.locale {
+    float: right !important;
 }
 
 /*** Home ***/
