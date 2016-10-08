@@ -20,6 +20,13 @@ html, body {
 /*** Home ***/
 #home > div > div {
     height: 50vh;
+    padding-top: 50px;
+    border: solid #e4b101 1px;
+}
+
+.step_text {
+    margin: 75px 20px 50px 20px;
+    font-family: Raleway, serif;
 }
 
 /*** Maps ***/
