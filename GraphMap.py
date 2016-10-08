@@ -25,5 +25,4 @@ class mapper:
         for i in self.cityList:
             g.add_edge( ( i, self.cityNum - 1 ) )
             g.es[g.get_eid( i, self.cityNum - 1 )]["weight"] = 0  # Get skyscanner cost
-    
 
