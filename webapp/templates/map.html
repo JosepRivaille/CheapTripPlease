@@ -1,0 +1,14 @@
+<div id="map">
+    <script>
+        function myMap() {
+            var mapCanvas = document.getElementById("map");
+            var mapOptions = {
+                center: new google.maps.LatLng(51.5, -0.2),
+                zoom: 6,
+                mapTypeId: 'satellite'
+            };
+            var map = new google.maps.Map(mapCanvas, mapOptions);
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCae5qjNTc_T1LFkfjyjqfyfsIlZbuEMn8&callback=myMap"></script>
+</div>

@@ -1,0 +1,39 @@
+html, body {
+    max-width: 100%;
+    max-height: 100%;
+    overflow-x: hidden;
+}
+
+/*** Navbar ***/
+
+.navbar-fixed-left {
+  width: 20vw;
+  position: fixed;
+  border-radius: 0;
+  height: 100%;
+}
+
+.navbar-fixed-left .navbar-nav > li {
+  float: right;
+  width: 139px;
+}
+
+.navbar-fixed-left + .container {
+  padding-left: 160px;
+}
+
+.navbar-fixed-left .navbar-nav > li > .dropdown-menu {
+  margin-top: -50px;
+  margin-left: 140px;
+}
+
+/*** Home ***/
+#home > div > div {
+    height: 50vh;
+}
+
+/*** Maps ***/
+#map {
+    width: 100vw;
+    height: 100vh;
+}
