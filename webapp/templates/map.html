@@ -1,0 +1,42 @@
+<div data-ng-controller="FormController" class="form-container">
+    <form data-ng-keyup="$event.keyCode == 13 ? myFunc() : null" class="form-style-9 center-block">
+    <ul>
+        <li>
+            <input type="text" name="from" class="field-style field-split align-left" placeholder="From" />
+            <input type="date" name="startTime" class="field-style field-split align-right" placeholder="Date" />
+        </li>
+        <li>
+            <input type="text" name="to" class="field-style field-split align-left" placeholder="To" />
+            <input type="date" name="endTime" class="field-style field-split align-right" placeholder="Date" />
+        </li>
+        <li>
+            <label>Cities to visit:</label>
+            <div data-ng-repeat="city in cities">
+                <input type="text" name="" data-ng-model="city.name" class="field-style field-full align-none" placeholder="Add a city to visit" />
+                <button class="remove" data-ng-show="$last" data-ng-click="removeChoice()">-</button>
+            </div>
+        </li>
+        <li>
+<!--            <button class="addfields" data-ng-keyup="$event.keyCode == 13 ? addNewChoice() : null">Add more cities</button><br>-->
+            <input type="submit" value="Send Message" />
+        </li>
+    </ul>
+</form>
+</div>
+
+<div id="map">
+    <script>
+        function myMap() {
+            var mapCanvas = document.getElementById("map");
+            var mapOptions = {
+                center: new google.maps.LatLng(51.5, -0.2),
+                disableDefaultUI: true,
+                draggable: false,
+                zoom: 3,
+                mapTypeId: 'satellite'
+            };
+            var map = new google.maps.Map(mapCanvas, mapOptions);
+        }
+    </script>
+    <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyCae5qjNTc_T1LFkfjyjqfyfsIlZbuEMn8&callback=myMap"></script>
+</div>
