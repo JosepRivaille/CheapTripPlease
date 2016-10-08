@@ -1,27 +1,27 @@
 <div data-ng-controller="FormController" class="form-container">
     <form data-ng-keyup="$event.keyCode == 13 ? myFunc() : null" class="form-style-9 center-block">
-    <ul>
-        <li>
-            <input type="text" name="from" class="field-style field-split align-left" placeholder="From" />
-            <input type="date" name="startTime" class="field-style field-split align-right" placeholder="Date" />
-        </li>
-        <li>
-            <input type="text" name="to" class="field-style field-split align-left" placeholder="To" />
-            <input type="date" name="endTime" class="field-style field-split align-right" placeholder="Date" />
-        </li>
-        <li>
-            <label>Cities to visit:</label>
-            <div data-ng-repeat="city in cities">
-                <input type="text" name="" data-ng-model="city.name" class="field-style field-full align-none" placeholder="Add a city to visit" />
-                <button class="remove" data-ng-show="$last" data-ng-click="removeChoice()">-</button>
-            </div>
-        </li>
-        <li>
-<!--            <button class="addfields" data-ng-keyup="$event.keyCode == 13 ? addNewChoice() : null">Add more cities</button><br>-->
-            <input type="submit" value="Send Message" />
-        </li>
-    </ul>
-</form>
+        <ul>
+            <li>
+                <input type="text" name="from" class="field-style field-split align-left" placeholder="From" />
+                <input type="date" name="startTime" class="field-style field-split align-right" placeholder="Date" />
+            </li>
+            <li>
+                <input type="text" name="to" class="field-style field-split align-left" placeholder="To" />
+                <input type="date" name="endTime" class="field-style field-split align-right" placeholder="Date" />
+            </li>
+            <li>
+                <label>Cities to visit:</label>
+                <div data-ng-repeat="city in cities">
+                    <input type="text" data-ng-keyup="$event.keyCode == 13 ? addNewChoice() : null" name="" data-ng-model="city.name" class="field-style field-full align-none" placeholder="Add a city to visit" />
+                    <button class="remove" data-ng-show="$last" data-ng-click="removeChoice()">-</button>
+                </div>
+            </li>
+            <li>
+                <button class="addfields">Add more cities</button><br>
+                <input type="submit" data-ng-click="uploadData()" value="Send Message" />
+            </li>
+        </ul>
+    </form>
 </div>
 
 <div id="map">

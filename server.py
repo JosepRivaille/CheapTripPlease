@@ -2,9 +2,10 @@ from flask import Flask, request, abort, jsonify
 from geopy.geocoders import Nominatim
 import json
 import urllib.request
-import SkyScannerIO
+from flask_cors import CORS
 
 app = Flask(__name__)
+CORS(app)
 
 
 def calculate_route(cities):
@@ -23,6 +24,11 @@ def get_parameters_list():
         'daysRange': 'range/days',
     }
     return jsonify(**parameters)
+
+
+@app.route("/sendData", methods=['POST'])
+def get_sent_data():
+    return "OK"
 
 
 @app.route('/cities')
