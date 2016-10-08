@@ -2,6 +2,12 @@ html, body {
     max-width: 100%;
     max-height: 100%;
     overflow-x: hidden;
+    background: url('../images/home_wallpaper.png') no-repeat center center fixed;
+    background-color:rgba(255,0,0,0.5);
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
 }
 
 /*** Navbar ***/
@@ -14,19 +20,27 @@ html, body {
 }
 
 .nav > li > a:hover {
-    color: #E4B101;
+    color: #E4B101 !important;
 }
 
 /*** Home ***/
+
+#home > div {
+    margin-top: 6px;
+}
+
 #home > div > div {
-    height: 50vh;
+    height: 45vh;
     padding-top: 50px;
-    border: solid #e4b101 1px;
+    border: solid darkred 1px;
+    border-radius: 5px;
+    background-color: rgba(200,200,200,0.5);
 }
 
 .step_text {
     margin: 75px 20px 50px 20px;
     font-family: Raleway, serif;
+    color: white;
 }
 
 /*** Maps ***/
