@@ -2,6 +2,7 @@ from flask import Flask, request, abort, jsonify
 from geopy.geocoders import Nominatim
 import json
 import urllib.request
+import SkyScannerIO
 
 app = Flask(__name__)
 
