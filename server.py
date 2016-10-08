@@ -67,6 +67,14 @@ def get_all_cities():
 
     calculate_route(near_cities)
 
+'''@app.route('/userSettings')
+def get_user_cities():
+    parameters = {
+        'locale': 'string'      # The language for the user, string of form ISO locale code, ex 'en-GB'
+        'market': 'string'      # The country the user is in, string of form Skyscanner country ISO code
+        'currency': 'string'    # The prefered currency type, string of form ISO currency code, ex 'GBP', 'USD'
+    }
+    return jsonify(**parameters)'''
 
 if __name__ == '__main__':
     app.run()
