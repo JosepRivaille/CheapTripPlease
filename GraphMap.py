@@ -8,7 +8,7 @@ class mapper:
     cityLast = []
     cityNum = 0
 
-    def __init__(self, cityList, cityFirst, cityLast):
+    def __init__(self, cityList, cityFirst, cityLast, d1, dLast):
         self.cityList = cityList
         self.cityFirst = cityFirst
         self.cityLast = cityLast
