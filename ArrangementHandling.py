@@ -74,7 +74,7 @@ class ArrangementHandler:
                 for dest in range(1, self.search_instance.city_num):
                     if origin is not dest:
                         data_json = json.load(self.scanner.cheapest_by_route(
-                            city1=origin,city2=dest,date1=dates[trip][self.range_of_search_days]))
+                            city1=origin,city2=dest,date1=(dates[trip][self.range_of_search_days]).isoformat()))
                         self.search_instance.weight_edge(self,origin, dest, trip,
                                                          data_json['Quotes'][0]['MinPrice'],
                                                          data_json['Quotes'][0]['DepartureDate'],
