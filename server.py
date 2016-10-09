@@ -1,7 +1,7 @@
-from flask import Flask, request
-import json
+from flask import Flask, request, jsonify
 from flask_cors import CORS
 import ArrangementHandling as ah
+import SkyScannerIO as ssIO
 
 app = Flask(__name__)
 CORS(app)
@@ -10,7 +10,20 @@ CORS(app)
 # From server to web
 @app.route('/getData')
 def get_calculated_data():
-    return False
+    data_list = []
+    data_maps = {
+        'name': "Barcelona",
+        'lat': 41.3851,
+        'lng': 2.1734
+    }
+    data_list.append(data_maps)
+    data_maps = {
+        'name': "Valencia",
+        'lat': 39.4699,
+        'lng': 0.3763
+    }
+    data_list.append(data_maps)
+    return jsonify(data_list)
 
 
 # From web to server
@@ -32,8 +45,21 @@ def post_sent_data():
     bundle_days_orig_dest_citieslist.append(destination_city)
     for x in range(number_cities):
         bundle_days_orig_dest_citieslist.append(request.form.get('city_' + x))
-    backend = ah.ArrangementHandler(bundle_days_orig_dest_citieslist)
+    if number_cities is not None:
+        list_cities = [origin_city]
+        for x in range(number_cities):
+            list_cities.append(request.form.get('city_' + 'asd'))
+        list_cities.append(destination_city)
+        list_cities.append(start_day)
+        list_cities.append(end_day)
+    # ArrangementHandling m(list_cities)
+    return
 
+
+# Autocomplete route
+@app.route("/autocomplete/<query>")
+def autocomplete_query(query=""):
+    return ssIO.auto_suggest_location(query)
 
 if __name__ == '__main__':
     app.run()

@@ -147,9 +147,9 @@ def get_currency():
 def auto_suggest_location(query):
     r = requests.get(url + 'autosuggest/v1.0/' + defaultScanner.market + '/' + defaultScanner.currency + '/'
                      + defaultScanner.locale + '/', params={'query': query, 'apiKey': api_key}, headers=header)
+
     if r.status_code >= 400:
-        # error
-        print('error' + str(r.status_code))
+        print('error' + r.status_code)
         if r.status_code == 400:
             return -1
         elif r.status_code == 403:
@@ -160,4 +160,4 @@ def auto_suggest_location(query):
             return -4
         else:
             return -5
-    return r.json()
+    return r.text
