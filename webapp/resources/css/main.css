@@ -13,6 +13,7 @@ html, body {
 /*** Navbar ***/
 .navbar {
     background-color: #111417;
+    border-bottom-color: #E4B101;
 }
 
 #content-wrapper {
