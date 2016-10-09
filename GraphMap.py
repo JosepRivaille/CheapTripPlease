@@ -3,7 +3,7 @@ from igraph import *
 
 class Mapper:
     g = Graph()
-    city_list = []
+    city_list = set()
     city_first = ''
     city_last = ''
     city_num = 0
@@ -19,6 +19,8 @@ class Mapper:
         if((not not self.city_first)and(not not self.city_last)and(not not self.city_list)and(not not self.city_num)):
             self.g.add_vertices(self.city_num)
             self.g.vs["Airport"] = [self.city_first, self.city_list, self.city_last]
+            return True
+        return False
 
     def weight_edges(self):
         # Weight the first city to the rest
