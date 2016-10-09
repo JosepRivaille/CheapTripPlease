@@ -156,6 +156,11 @@ label {
     opacity: 0;
 }
 
+.submit_button {
+    margin-top: 15px;
+    width: 100%;
+}
+
 
 /*** Loader ***/
 #loader {
