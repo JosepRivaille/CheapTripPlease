@@ -26,18 +26,14 @@ class SkyScan:
             self.currency = 'EUR'
 
     # Cached, 'old', data. We can't show this data without a disclaimer or pulling live data. First, use these
-    def cheapest_by_route(self, list_of_cities_dates):
-        city1 = list_of_cities_dates[0]
-        city2 = list_of_cities_dates[1]
-        date1 = list_of_cities_dates[2]
-        date2 = list_of_cities_dates[3]
+    def cheapest_by_route(self, city1, city2, date1, date2=''):
         r = requests.get(url + 'browseroutes/v1.0/' + self.market + '/' + self.currency + '/'
                          + self.locale + '/' +
                          city1 + '/' + city2 + '/' + date1 + '/' + date2,
                          params={'apiKey': api_key}, headers=header)
         if r.status_code >= 400:
             # error
-            print('error' + r.status_code)
+            print('error' + str(r.status_code))
             if r.status_code == 400:
                 return -1
             elif r.status_code == 403:
@@ -50,18 +46,14 @@ class SkyScan:
                 return -5
         return r.json()
 
-    def cheapest_by_date(self, list_of_cities_dates):
-        city1 = list_of_cities_dates[0]
-        city2 = list_of_cities_dates[1]
-        date1 = list_of_cities_dates[2]
-        date2 = list_of_cities_dates[3]
+    def cheapest_by_date(self, city1, city2, date1, date2=''):
         r = requests.get(url + 'browsedates/v1.0/' + self.market + '/' + self.currency + '/'
                          + self.locale + '/' +
                          city1 + '/' + city2 + '/' + date1 + '/' + date2,
                          params={'apiKey': api_key}, headers=header)
         if r.status_code >= 400:
             # error
-            print('error' + r.status_code)
+            print('error' + str(r.status_code))
             if r.status_code == 400:
                 return -1
             elif r.status_code == 403:
@@ -74,18 +66,14 @@ class SkyScan:
                 return -5
         return r.json()
 
-    def cheapest_by_quotes(self, list_of_cities_dates):
-        city1 = list_of_cities_dates[0]
-        city2 = list_of_cities_dates[1]
-        date1 = list_of_cities_dates[2]
-        date2 = list_of_cities_dates[3]
+    def cheapest_by_quotes(self, city1, city2, date1, date2=''):
         r = requests.get(url + 'browsequotes/v1.0/' + self.market + '/' + self.currency + '/'
                          + self.locale + '/' +
                          city1 + '/' + city2 + '/' + date1 + '/' + date2,
                          params={'apiKey': api_key}, headers=header)
         if r.status_code >= 400:
             # error
-            print('error' + r.status_code)
+            print('error' + str(r.status_code))
             if r.status_code == 400:
                 return -1
             elif r.status_code == 403:
@@ -124,7 +112,7 @@ def get_market():
     r = requests.get(url + urlStatic + 'countries/' + defaultScanner.locale, params={'apiKey': api_key}, headers=header)
     if r.status_code >= 400:
         # error
-        print('error' + r.status_code)
+        print('error' + str(r.status_code))
         if r.status_code == 400:
             return -1
         elif r.status_code == 403:
@@ -142,7 +130,7 @@ def get_currency():
     r = requests.get(url + urlStatic + 'currencies', params={'apiKey': api_key}, headers=header)
     if r.status_code >= 400:
         # error
-        print('error' + r.status_code)
+        print('error' + str(r.status_code))
         if r.status_code == 400:
             return -1
         elif r.status_code == 403:
@@ -161,7 +149,7 @@ def auto_suggest_location(query):
                      + defaultScanner.locale + '/', params={'query': query, 'apiKey': api_key}, headers=header)
     if r.status_code >= 400:
         # error
-        print('error' + r.status_code)
+        print('error' + str(r.status_code))
         if r.status_code == 400:
             return -1
         elif r.status_code == 403:
