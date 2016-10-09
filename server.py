@@ -1,77 +1,38 @@
-from flask import Flask, request, abort, jsonify
-from geopy.geocoders import Nominatim
+from flask import Flask, request
 import json
-import urllib.request
 from flask_cors import CORS
+
+from ArrangementHandling import ArrangementHandling
 
 app = Flask(__name__)
 CORS(app)
 
 
-def calculate_route(cities):
-    return json.dumps(cities, ensure_ascii=False)
+# From server to web
+@app.route('/getData')
+def get_calculated_data():
+    return False
 
 
-@app.route('/')
-def hello_world():
-    return 'Hello World!'
-
-
+# From web to server
 @app.route("/sendData", methods=['POST'])
-def get_sent_data():
+def post_sent_data():
+    # Origin
+    origin_city = request.form.get('originCity')
+    start_day = request.form.get('startDate')
+    # Destination
+    destination_city = request.form.get('destinationCity')
+    end_day = request.form.get('endDate')
+    # Cities to visit
+    number_cities = request.form.get('numberCities', type=int)
+    list_cities = [origin_city]
+    for x in range(number_cities):
+        list_cities.append(request.form.get('city_' + x))
+    list_cities.append(destination_city)
+    list_cities.append(start_day)
+    list_cities.append(end_day)
+    # ArrangementHandling m(list_cities)
 
-
-
-@app.route('/cities')
-def get_all_cities():
-    city_name = request.args.get('city_name', None)
-    if city_name is None:
-        abort(400)
-    try:
-        if city_name is None:
-            raise ValueError('Unexisting data')
-        radius = float(request.args.get('radius', 0))
-    except ValueError:
-        abort(400)
-
-    country = None
-    with open('./webapp/resources/json/countriesToCities.json') as file:
-        """
-        country_city_json = json.load(file)
-        for json_country in country_city_json:
-            for json_city in country_city_json[json_country]:
-                if json_city == city_name:
-                    country = json_country
-        """
-        # TODO: Translate to english name format
-        APIKEY = "AIzaSyCae5qjNTc_T1LFkfjyjqfyfsIlZbuEMn8"
-        url = "https://maps.googleapis.com/maps/api/geocode/json?address=" + city_name + "&key=" + APIKEY
-        country_city_json = urllib.request.urlopen(url).read()
-        country_city = country_city_json['results']
-        _, country = country_city.split(',')
-        country = country[1:]
-
-        near_cities = country_city_json[country]
-        file.close()
-
-    geo_locator = Nominatim()
-    location = geo_locator.geocode(city_name)
-
-    for city in near_cities:
-        new_loc = geo_locator.geocode(city)
-        if not new_loc.latitude - location.latitude < radius or not new_loc.longitude - location.longitude < radius:
-            near_cities.remove(city)
-
-    calculate_route(near_cities)
-
-'''@app.route('/userSettings')
-def get_user_cities():
-    parameters = {
-        'locale': 'string'      # The language for the user, string of form ISO locale code, ex 'en-GB'
-        'market': 'string'      # The country the user is in, string of form Skyscanner country ISO code
-        'currency': 'string'    # The prefered currency type, string of form ISO currency code, ex 'GBP', 'USD'
-    }
-    return jsonify(**parameters)'''
 
 if __name__ == '__main__':
     app.run()

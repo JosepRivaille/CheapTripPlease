@@ -108,9 +108,9 @@ label {
     -o-transition: all 0.30s ease-in-out;
 
 }.form-style-9 ul li  .field-style:focus{
-    box-shadow: 0 0 5px #B0CFE0;
-    border:1px solid #B0CFE0;
-}
+     box-shadow: 0 0 5px #B0CFE0;
+     border:1px solid #B0CFE0;
+ }
 .form-style-9 ul li .field-split{
     width: 49%;
 }
@@ -145,4 +145,34 @@ label {
 .form-style-9 ul li input[type="button"]:hover,
 .form-style-9 ul li input[type="submit"]:hover {
     background: #28739E linear-gradient(to bottom, #2D77A2 5%, #337DA8 100%);
+}
+
+
+/*** Loader ***/
+.loader {
+    position: absolute;
+    z-index: 10000 ;
+    margin: auto;
+    display: none;
+    border-top: 16px solid blue;
+    border-right: 16px solid green;
+    border-bottom: 16px solid red;
+    border-left: 16px solid yellow;
+    border-radius: 50%;
+    width: 120px;
+    height: 120px;
+    animation: spin 2s linear infinite;
+}
+
+.display_loader {
+    visibility: visible;
+}
+
+.hide_loader {
+    visibility: hidden;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
 }
