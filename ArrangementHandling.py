@@ -41,7 +41,7 @@ class ArrangementHandler:
         my_list = []
         for i in range(1,self.search_instance.city_num-1):
             my_list.append(list(self.day_first.date_date + datetime.timedelta(days= x + i*self.days_av)
-            for x in range(-self.range_of_search_days,self.range_of_search_days)))
+                                for x in range(-self.range_of_search_days,self.range_of_search_days)))
         my_list.insert(0,list(self.day_first.date_date + datetime.timedelta(days= x)
                               for x in range(0,self.range_of_search_days)))
         my_list.append(list(self.day_last + datetime.timedelta(days= x)
