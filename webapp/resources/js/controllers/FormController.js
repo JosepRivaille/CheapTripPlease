@@ -21,7 +21,10 @@ app.controller('FormController', function($scope, $http) {
     $scope.uploadData = function() {
         var loader = document.querySelector("#loader");
         console.log(loader);
-        loader.className += ' display_loader';
+        loader.className = 'display_loader';
+        var form_div = document.querySelector(".form-style-9");
+        form_div.className = 'hide_form';
+
         $http({ method: 'POST', url: 'http://127.0.0.1:5000/sendData' })
             .success(function(data, status, headers, config) {
                 console.log(data + " " + status);

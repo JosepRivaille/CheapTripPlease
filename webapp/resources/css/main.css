@@ -147,12 +147,24 @@ label {
     background: #28739E linear-gradient(to bottom, #2D77A2 5%, #337DA8 100%);
 }
 
+.cities_to_visit {
+    margin-top: 4px;
+}
+
+.hide_form {
+    display: none;
+    opacity: 0;
+}
+
 
 /*** Loader ***/
-.loader {
+#loader {
     position: absolute;
-    z-index: 10000 ;
-    margin: auto;
+    top: 50%;
+    left: 50%;
+    margin-top: -50px;
+    margin-left: -50px;
+    z-index: 10;
     display: none;
     border-top: 16px solid blue;
     border-right: 16px solid green;
@@ -165,11 +177,7 @@ label {
 }
 
 .display_loader {
-    visibility: visible;
-}
-
-.hide_loader {
-    visibility: hidden;
+    display: inherit !important;
 }
 
 @keyframes spin {
